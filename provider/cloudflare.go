@@ -257,7 +257,7 @@ func cloudflareSuitableZone(hostname string, zones []cloudflare.Zone) *cloudflar
 
 func (p *cloudFlareProvider) getRecordID(records []cloudflare.DNSRecord, zoneID string, record cloudflare.DNSRecord) string {
 	for _, zoneRecord := range records {
-		if zoneRecord.Name == record.Name {
+		if zoneRecord.Name == record.Name && zoneRecord.Type == record.Type {
 			return zoneRecord.ID
 		}
 	}
